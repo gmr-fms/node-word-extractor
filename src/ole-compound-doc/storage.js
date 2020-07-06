@@ -20,7 +20,7 @@ class Storage {
   }
 
   streamFromBuffer(streamName) {
-    const streamEntry = this._dirEntry.streams[streamName]
+    const streamEntry = this._dirEntry.streams[streamName] || this._dirEntry.streams[`${streamName}\u0000`]
     if (!streamEntry) return null
 
     const doc = this._doc
